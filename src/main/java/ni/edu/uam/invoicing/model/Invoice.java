@@ -1,6 +1,7 @@
 package ni.edu.uam.invoicing.model;
 
 import java.time.*;
+import java.util.Collection;
 import javax.persistence.*;
 
 import ni.edu.uam.invoicing.calculators.NextNumberForYearCalculator;
@@ -36,5 +37,9 @@ public class Invoice {
 
     @TextArea
     String remarks;
+
+    @ElementCollection
+    @ListProperties("product.number, product.description, quantity")
+    Collection<Detail> details;
 
 }
